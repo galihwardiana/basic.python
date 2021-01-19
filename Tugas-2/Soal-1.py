@@ -16,7 +16,8 @@ def fungsiProgram():
             menuDua()
         while menu == 1:
             menuSatu()
-        while menu != 1 or menu != 2 or menu != 3 :
+        #while menu != 1 or menu != 2 or menu != 3 :
+        else:
             print("\nMenu tidak tersedia")
             fungsiProgram()
     print("\nProgram Selesai!\n")
