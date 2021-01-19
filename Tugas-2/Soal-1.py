@@ -4,19 +4,17 @@ listNomor = []
 
 #fungsi program
 def fungsiProgram():
-    print("\nSelamat Datang!")
     print('''
     --- Menu ---
     1. Daftar Kontak
     2. Tambah Kontak
     3. Keluar''')
-    menu = int(input("\nPilih menu: "))
+    menu = (int(input("\nPilih menu: ")))
     while menu != 3:
         while menu == 2:
             menuDua()
         while menu == 1:
             menuSatu()
-        #while menu != 1 or menu != 2 or menu != 3 :
         else:
             print("\nMenu tidak tersedia")
             fungsiProgram()
@@ -40,4 +38,6 @@ def menuDua() :
     print("\nKontak berhasil ditambahkan\n")
     fungsiProgram()
 
+#jalankan program    
+print("\nSelamat Datang!")
 fungsiProgram()
