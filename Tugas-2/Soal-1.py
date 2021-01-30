@@ -24,7 +24,7 @@ def fungsiProgram():
 
 #fungsi menu satu
 def menuSatu() :
-    print("\nDaftar Kontak")
+    print("\nDaftar Kontak\n")
     for x in range(0, len(listNama)):
         print(x+1,". Nama: " ,listNama[x] )
         print("    Nomor Telepon: ",listNomor[x])
@@ -33,7 +33,7 @@ def menuSatu() :
 
 #fungsi menu dua
 def menuDua() :
-    listNama.append(str(input("\nNama: ")))
+    listNama.append(input("\nNama: "))
     listNomor.append(input("Nomor Telepon: "))
     print("\nKontak berhasil ditambahkan\n")
     fungsiProgram()
