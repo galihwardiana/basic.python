@@ -5,22 +5,33 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-
-#content
-
-
 #getting sender email
-email = input("Masukkan email: ")
-password = stdiomask.getpass("Masukkan password: ")
-message = "Hi this sent from Python"
+sender_email = input("Please input email: ")
+password = stdiomask.getpass("Input your password: ")
+mail_content = "Hi this sent from Python"
 
 #read recipient list
 f = open("receiver_list.txt", "r+")
 receiver_email = [i.strip() for i in f.readlines()]
 
+message = MIMEMultipart()
+message ['From'] = sender_email
+message ['To'] = ', '.join(receiver_email)
+message ['Subject'] = 'Python Email'
+message.attach(MIMEText(mail_content, 'plain'))
+attach_file_name = 'Final Project - Basic Python.pdf'
+attach_file = open(attach_file_name, 'rb')
+payload = MIMEBase('application', 'octate-stream')
+payload.set_payload((attach_file).read())
+encoders.encode_base64(payload)
+payload.add_header('Content-Decomposition', 'attachment', filename=attach_file_name)
+message.attach(payload)
+
 
 #log in server
 context = ssl.create_default_context()
 with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-    server.login(email, password)
-    server.sendmail(email, receiver_email, message)
+    server.login(sender_email, password)
+    text = message.as_string()
+    server.sendmail(sender_email, receiver_email, text)
+print('Mail Sent')
