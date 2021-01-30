@@ -20,11 +20,11 @@ message ['To'] = ', '.join(receiver_email)
 message ['Subject'] = 'Python Email'
 message.attach(MIMEText(mail_content, 'plain'))
 attach_file_name = 'Final Project - Basic Python.pdf'
-attach_file = open(attach_file_name, 'rb')
-payload = MIMEBase('application', 'octate-stream')
+attach_file = open('Final Project - Basic Python.pdf', 'rb')
+payload = MIMEBase('application', 'octet-stream')
 payload.set_payload((attach_file).read())
 encoders.encode_base64(payload)
-payload.add_header('Content-Decomposition', 'attachment', filename=attach_file_name)
+payload.add_header('Content-Disposition', 'attachment', filename=attach_file_name)
 message.attach(payload)
 
 
