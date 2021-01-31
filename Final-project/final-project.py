@@ -1,4 +1,4 @@
-import email, smtplib, ssl, getpass, stdiomask
+import smtplib, ssl, getpass, stdiomask
 
 from email import encoders
 from email.mime.base import MIMEBase
@@ -8,12 +8,13 @@ from email.mime.text import MIMEText
 #getting sender email
 sender_email = input("Please input email: ")
 password = stdiomask.getpass("Input your password: ")
-mail_content = "Hi this sent from Python"
 
 #read recipient list
 f = open("receiver_list.txt", "r+")
 receiver_email = [i.strip() for i in f.readlines()]
 
+#message
+mail_content = "Hi this sent from Python"
 message = MIMEMultipart()
 message ['From'] = sender_email
 message ['To'] = ', '.join(receiver_email)
